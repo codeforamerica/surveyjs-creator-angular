@@ -49,46 +49,6 @@ export class SurveyCreatorComponent implements OnInit {
     // set html
     options.html = str;
   };
-
-  ngOnInit() {
-
-    const creator = new SurveyCreatorModel(creatorOptions);
-
-    creator.JSON = surveyJson;
-
-    creator.onSurveyInstanceCreated.add((sender,options) => {
-      if (
-        options.reason === "designer" ||
-        options.reason === "test" ||
-        options.reason === "condition-builder"
-      ) {
-        options.survey.onTextMarkdown.add(this.doMarkdown);
-      }
-    });
-
-    creator.onPreviewSurveyCreated.add(function (sender: SurveyCreatorModel, options: any) {
-     //initialize visible dynamic panels
-     var survey = sender.survey;
-    //initialize visible dynamic panels
-    survey.getAllQuestions().forEach(q => {     
-      if(q.getType() === "paneldynamic") {
-        var panel = (q as SurveyCore.QuestionPanelDynamicModel);
-        var isFirstItemHidden = q['isFirstItemHidden'];    
-        SurveyCreatorComponent.setVisibleDynamicPanel((q as SurveyCore.QuestionPanelDynamicModel),q['startItemIndex']);  
-        if (isFirstItemHidden)
-          panel.panels[0].visible = false;       
-      }
-    });
-
-    survey.onDynamicPanelAdded.add(SurveyCreatorComponent.onDynamicPanelAdded);
-    survey.onDynamicPanelItemValueChanged.add(SurveyCreatorComponent.onDynamicPanelItemValueChanged);
-    survey.onGetPanelFooterActions.add(SurveyCreatorComponent.onGetPanelFooterActions);
-  
-  });
-    
-    this.surveyCreatorModel = creator;
-  }
-
   static onDynamicPanelAdded(sender: SurveyCore.Model, options: SurveyCore.DynamicPanelModifiedEvent) {
     sender.currentPage = options.question['goToPageOnAddorEdit'];
     sender.getAllQuestions().forEach(q => {     
@@ -147,4 +107,39 @@ export class SurveyCreatorComponent implements OnInit {
       } 
     }      
   }
+  ngOnInit() {
+
+    const creator = new SurveyCreatorModel(creatorOptions);
+
+    creator.JSON = surveyJson;
+
+    creator.onSurveyInstanceCreated.add((sender,options) => {
+      if (
+        options.reason === "designer" ||
+        options.reason === "test" ||
+        options.reason === "condition-builder"
+      ) {
+        options.survey.onTextMarkdown.add(this.doMarkdown);
+      }
+      if(options.reason === "test")  {
+      //initialize visible dynamic panels
+      var survey = options.survey;
+      //initialize visible dynamic panels
+      survey.getAllQuestions().forEach((q: SurveyCore.Question) => {     
+        if(q.getType() === "paneldynamic") {
+          var panel = (q as SurveyCore.QuestionPanelDynamicModel);
+          var isFirstItemHidden = q['isFirstItemHidden'];    
+          SurveyCreatorComponent.setVisibleDynamicPanel((q as SurveyCore.QuestionPanelDynamicModel),q['startItemIndex']);  
+          if (isFirstItemHidden)
+            panel.panels[0].visible = false;       
+      }});
+      survey.onDynamicPanelAdded.add(SurveyCreatorComponent.onDynamicPanelAdded);
+      survey.onDynamicPanelItemValueChanged.add(SurveyCreatorComponent.onDynamicPanelItemValueChanged);
+      survey.onGetPanelFooterActions.add(SurveyCreatorComponent.onGetPanelFooterActions);
+    }
+
+  });
+    
+  this.surveyCreatorModel = creator; 
+}
 }
