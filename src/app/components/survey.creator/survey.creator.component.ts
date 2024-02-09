@@ -9,6 +9,9 @@ import "survey-core/survey.i18n.js";
 import "survey-creator-core/survey-creator-core.i18n.js";
 import "survey-core/defaultV2.css";
 import "survey-creator-core/survey-creator-core.css";
+import { autocomplete } from "surveyjs-widgets";
+
+autocomplete(SurveyCore);
 
 Serializer.addProperty("question", { name: 'startItemIndex',  type: 'number',  category: 'general', } );
 Serializer.addProperty("question", { name: 'isSingleItemEditMode', type: 'boolean', category: 'general', } );

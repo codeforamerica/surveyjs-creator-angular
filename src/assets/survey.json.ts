@@ -337,6 +337,7 @@ export const surveyJson = {
          },
          {
           "type": "text",
+          "choices": [ "Ophamer", "Opera", "Saint Poppy", "Penelope" ],
           "name": "schoolDistrict",
           "title": "In what school district does {panel.firstName} attend school?",
           "titleLocation": "top"
