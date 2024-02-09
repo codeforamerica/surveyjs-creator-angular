@@ -117,6 +117,7 @@ export class SurveyCreatorComponent implements OnInit {
 
     creator.onSurveyInstanceCreated.add((sender,options) => {
       if(options.reason === "test")  {
+       var survey = options.survey;
 
       //initialize visible dynamic panels
       survey.getAllQuestions().forEach((q: SurveyCore.Question) => {     
