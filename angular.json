@@ -36,7 +36,8 @@
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js", 
-              "./node_modules/easy-autocomplete/dist/jquery.easy-autocomplete.js"
+              "./node_modules/easy-autocomplete/dist/jquery.easy-autocomplete.js",
+              "./node_modules/inputmask/dist/jquery.inputmask.js"
             ],
             "server": "src/main.server.ts",
             "prerender": false,
