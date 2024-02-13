@@ -134,25 +134,25 @@ export const surveyJson = {
           "expression": "{panel.firstName} + ' ' + {panel.lastName}"
          },
          {
-          "type": "panel",
-          "name": "birthDatePanel",
-          "elements": [
+            "type": "html",
+            "name": "question1",
+            "html": "<b>When were they born?</b><br>Month / Day / Year"
+           },
            {
             "type": "text",
             "name": "birthMonth",
-            "width": "80px",
-            "minWidth": "80px",
-            "maxWidth": "80px",
-            "startWithNewLine": false,
+            "width": "75px",
+            "minWidth": "75px",
+            "maxWidth": "75px",
             "title": "Month",
             "titleLocation": "hidden"
            },
            {
             "type": "text",
             "name": "birthDay",
-            "width": "80px",
-            "minWidth": "80px",
-            "maxWidth": "80px",
+            "width": "75px",
+            "minWidth": "75px",
+            "maxWidth": "75px",
             "startWithNewLine": false,
             "title": "Day",
             "titleLocation": "hidden"
@@ -166,16 +166,8 @@ export const surveyJson = {
             "startWithNewLine": false,
             "title": "Year",
             "titleLocation": "hidden"
-           }
-          ],
-          "title": "When were they born?",
-          "description": "Month / Day / Year",
-          "questionErrorLocation": "bottom",
-          "width": "auto",
-          "maxWidth": "550px",
-          "showQuestionNumbers": "off"
-         },
-         {
+           },
+              {
           "type": "radiogroup",
           "name": "isTribalMember",
           "title": "Is this student a registered member of an Indian Tribal Organization?",
@@ -336,7 +328,7 @@ export const surveyJson = {
           "html": "<div><span><svg width='100' height='75' id=\"svg-icon-school\"><use href=\"#icon-school\"></span><br><h4>School information for {panel.firstName}</h4></div>"
          },
          {
-          "type": "text",
+          "type": "dropdown",
           "choices": [ "Ophamer", "Opera", "Saint Poppy", "Penelope" ],
           "name": "schoolDistrict",
           "title": "In what school district does {panel.firstName} attend school?",
