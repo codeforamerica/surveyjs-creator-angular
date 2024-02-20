@@ -11,8 +11,9 @@ import "survey-core/defaultV2.css";
 import "survey-creator-core/survey-creator-core.css";
 import Inputmask from "inputmask";
 import { autocomplete, inputmask } from "surveyjs-widgets";
+import * as jquery from "jquery";
 
-autocomplete(SurveyCore);
+autocomplete(SurveyCore, jquery);
 inputmask(SurveyCore);
 
 Serializer.addProperty("question", { name: 'startItemIndex',  type: 'number',  category: 'general', } );
