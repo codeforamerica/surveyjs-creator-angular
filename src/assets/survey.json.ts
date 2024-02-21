@@ -3,28 +3,18 @@ export const surveyJson = {
     "logoPosition": "right",
     "pages": [
     {
-    "name": "contactInfoPage",
-    "elements": [
-        {
-        "type": "html",
-        "name": "contactInfoPageHeader",
-        "html": "<div><span><svg width='100' height='75' id=\"svg-icon-contactInfo\"><use href=\"#icon-contactInfo\"></span><br><h4>How can we send you updates and reminders about your application in the future?</h4></div>"
-        },
-        {
-         "type": "text",
-         "name": "phoneNumber",
-         "title": "What's your phone number?",
-         "description": " A caseworker may use this number to contact you directly. If you don't have a phone number, you can enter a friend or family member's phone number instead.",
-         "inputType": "text",
-         inputMask: "phone",
-         inputFormat: "999-999-9999",
-         clearIncomplete: true,
-         isRequired: true,
-         requiredErrorText: "Please make sure you are entering a valid 10-digit phone number, area code first." 
-        }
-       }
-      ]
-     },
+        "name": "applicationStepsPage",
+        "elements": [
+            {
+            "type": "html",
+            "name": "applicationSteps",
+            "html": {
+            "default": "<div><span><svg width='100' height='75' id=\"svg-icon-prepareToApply\"><use href=\"#icon-prepareToApply\"></span><br><h4>Application steps</h4>This application should take about <b>15 minutes</b> to complete.</div><div class=\"box\"><b>Steps</b><br><ol><li>Student information</li><li>Household information</li><li>Income and employment</li><li>Contact information</li></ol></div>",
+            "es": "<div><span><svg width='100' height='75' id=\"svg-icon-prepareToApply\"><use href=\"#icon-prepareToApply\"></span><br><h4>Pasos de la solicitud</h4>Esta aplicación debería tardar aproximadamente <b>15 minutos </b> completar.</div><div class=\"box\"><b>Steps</b><br><ol><li>Student information</li><li>Household information</li><li>Income and employment</li><li>Contact information</li></ol></div>"
+            }
+            }
+        ]
+    },      
      {
       "name": "studentInfoStepsPage",
       "elements": [
@@ -248,7 +238,8 @@ export const surveyJson = {
             "text": "Runaway from home"
            }
           ],
-          "showNoneItem": true
+          "showNoneItem": true,
+          "noneText": "None of the above"
          }
         ],
         "allowAddPanel": false,
@@ -423,7 +414,29 @@ export const surveyJson = {
         "panelRemoveText": "delete"
        }
       ]
-     }
+     },
+     {
+        "name": "contactInfoPage",
+        "elements": [
+            {
+            "type": "html",
+            "name": "contactInfoPageHeader",
+            "html": "<div><span><svg width='100' height='75' id=\"svg-icon-contactInfo\"><use href=\"#icon-contactInfo\"></span><br><h4>How can we send you updates and reminders about your application in the future?</h4></div>"
+            },
+            {
+             "type": "text",
+             "name": "phoneNumber",
+             "title": "What's your phone number?",
+             "description": " A caseworker may use this number to contact you directly. If you don't have a phone number, you can enter a friend or family member's phone number instead.",
+             "inputType": "text",
+             inputMask: "phone",
+             inputFormat: "999-999-9999",
+             clearIncomplete: true,
+             isRequired: true,
+             requiredErrorText: "Please make sure you are entering a valid 10-digit phone number, area code first." 
+            }
+          ]
+         }    
     ],
     "showTitle": false,
     "showQuestionNumbers": "off",

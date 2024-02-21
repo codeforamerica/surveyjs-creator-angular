@@ -23,7 +23,7 @@ Run `ng generate component component-name` to generate a new component. You can 
 1. Custom icons (DONE)
 1. Language translation support (DONE)
 1. Autocomplete (from a list) (DONE)
-1. Input masking (IN PROGRESS)
+1. Input masking (DONE)
 1. Dependent dropdowns 
 1. Address validation
 1. CfA Styling (IN PROGRESS)
