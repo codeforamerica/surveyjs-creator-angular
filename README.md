@@ -23,12 +23,11 @@ Run `ng generate component component-name` to generate a new component. You can 
 1. Custom icons (DONE)
 1. Language translation support (DONE)
 1. Autocomplete (from a list) (DONE)
-1. CfA Styling (IN PROGRESS)
-1. Markdown (IN PROGRESS)
 1. Input masking (IN PROGRESS)
 1. Dependent dropdowns 
 1. Address validation
-1. Address validation
+1. CfA Styling (IN PROGRESS)
+1. Markdown (IN PROGRESS)
 1. Deploy app to AWS (S3 bucket)
 1. PDF Output using DocSpring
 1. Document upload to S3
