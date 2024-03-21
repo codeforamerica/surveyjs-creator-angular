@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewContainerRef, ApplicationRef, EmbeddedViewRef } from '@angular/core';
 import { SurveyCreatorModel } from "survey-creator-core";
 import * as SurveyCore from 'survey-core';
 import { SurveyCreatorModule } from "survey-creator-angular";
@@ -12,6 +12,7 @@ import "survey-creator-core/survey-creator-core.css";
 import Inputmask from "inputmask";
 import { autocomplete, inputmask } from "surveyjs-widgets";
 import * as jquery from "jquery";
+import { MilemarkerPersonSvgComponent } from '../svg/milemarker.person.svg/milemarker.person.svg.component';
 
 autocomplete(SurveyCore, jquery);
 inputmask(SurveyCore);
@@ -49,6 +50,11 @@ const converter = new Converter();
 export class SurveyCreatorComponent implements OnInit {
 
   surveyCreatorModel!: SurveyCreatorModel;
+
+  constructor(
+    private viewContainerRef: ViewContainerRef,
+    private appRef: ApplicationRef,
+  ) {}
 
   doMarkdown(survey: any, options: any) {
     var str = converter.makeHtml(options.text);
@@ -118,6 +124,8 @@ export class SurveyCreatorComponent implements OnInit {
   }
   ngOnInit() {
 
+    this.registerSvgIcon();
+
     const creator = new SurveyCreatorModel(creatorOptions);
 
     creator.JSON = surveyJson;
@@ -144,5 +152,20 @@ export class SurveyCreatorComponent implements OnInit {
   });
     
   this.surveyCreatorModel = creator; 
+}
+
+registerSvgIcon() {
+
+  const component = this.viewContainerRef.createComponent(MilemarkerPersonSvgComponent);
+  this.viewContainerRef.insert(component.hostView);
+
+  const svgComponentRootNode = (component.hostView as EmbeddedViewRef<any>)
+    .rootNodes[0] as HTMLElement;
+  const svgElement = svgComponentRootNode.querySelector("svg")!.outerHTML;
+
+  SvgRegistry.registerIconFromSvg("icon-mileMarkerPerson", svgElement);
+
+  this.appRef.detachView(component.hostView);
+  component.destroy();
 }
 }
