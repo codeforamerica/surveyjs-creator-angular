@@ -124,7 +124,7 @@ export class SurveyCreatorComponent implements OnInit {
   }
   ngOnInit() {
 
-    this.registerSvgIcon();
+    this.registerSvgIcon(MilemarkerPersonSvgComponent, "icon-mileMarkerPerson");
 
     const creator = new SurveyCreatorModel(creatorOptions);
 
@@ -154,16 +154,16 @@ export class SurveyCreatorComponent implements OnInit {
   this.surveyCreatorModel = creator; 
 }
 
-registerSvgIcon() {
+registerSvgIcon<T extends Component>(svgClass: new() => T, svgIconName: string) {
 
-  const component = this.viewContainerRef.createComponent(MilemarkerPersonSvgComponent);
+  const component = this.viewContainerRef.createComponent(svgClass);
   this.viewContainerRef.insert(component.hostView);
 
   const svgComponentRootNode = (component.hostView as EmbeddedViewRef<any>)
     .rootNodes[0] as HTMLElement;
   const svgElement = svgComponentRootNode.querySelector("svg")!.outerHTML;
 
-  SvgRegistry.registerIconFromSvg("icon-mileMarkerPerson", svgElement);
+  SvgRegistry.registerIconFromSvg(svgIconName, svgElement);
 
   this.appRef.detachView(component.hostView);
   component.destroy();
