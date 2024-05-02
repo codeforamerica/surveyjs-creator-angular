@@ -85,6 +85,21 @@ export const surveyJson = {
       ]
      },
      {
+        "name": "testBirthDatePage",
+        "elements": [
+            {
+                "type": "text",
+                "name": "birthDateText",
+                "title": "Enter student birth date"
+            },
+            {
+                "type": "memorabledate",
+                "name": "birthDate",
+                "title": "Enter student birth date"
+            }
+        ]
+     },
+     {
       "name": "addStudentPage",
       "elements": [
        {
@@ -137,37 +152,12 @@ export const surveyJson = {
             "type": "html",
             "name": "question1",
             "html": "<b>When were they born?</b><br>Month / Day / Year"
-           },
-           {
-            "type": "text",
-            "name": "birthMonth",
-            "width": "75px",
-            "minWidth": "75px",
-            "maxWidth": "75px",
-            "title": "Month",
-            "titleLocation": "hidden"
-           },
-           {
-            "type": "text",
-            "name": "birthDay",
-            "width": "75px",
-            "minWidth": "75px",
-            "maxWidth": "75px",
-            "startWithNewLine": false,
-            "title": "Day",
-            "titleLocation": "hidden"
-           },
-           {
-            "type": "text",
-            "name": "birthYear",
-            "width": "95px",
-            "minWidth": "95px",
-            "maxWidth": "95px",
-            "startWithNewLine": false,
-            "title": "Year",
-            "titleLocation": "hidden"
-           },
-              {
+         },
+         {
+            "type": "memorabledate",
+            "name": "birthDatePanel",
+         },
+         {
           "type": "radiogroup",
           "name": "isTribalMember",
           "title": "Is this student a registered member of an Indian Tribal Organization?",
