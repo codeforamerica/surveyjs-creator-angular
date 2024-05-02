@@ -85,21 +85,6 @@ export const surveyJson = {
       ]
      },
      {
-        "name": "testBirthDatePage",
-        "elements": [
-            {
-                "type": "text",
-                "name": "birthDateText",
-                "title": "Enter student birth date"
-            },
-            {
-                "type": "memorabledate",
-                "name": "birthDate",
-                "title": "Enter student birth date"
-            }
-        ]
-     },
-     {
       "name": "addStudentPage",
       "elements": [
        {
