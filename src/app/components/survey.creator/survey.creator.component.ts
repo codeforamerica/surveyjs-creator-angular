@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SurveyCreatorModel } from "survey-creator-core";
 import * as SurveyCore from 'survey-core';
 import { SurveyCreatorModule } from "survey-creator-angular";
-import { SvgRegistry, Serializer } from 'survey-core';
+import { ComponentCollection, SvgRegistry, Serializer } from 'survey-core';
 import { Converter } from "showdown";
 import { surveyJson } from '../../../assets/survey.json';
 import "survey-core/survey.i18n.js";
@@ -38,6 +38,104 @@ const creatorOptions = {
 };
 
 const converter = new Converter();
+
+ComponentCollection.Instance.add({
+  name: "memorabledate",
+  title: "Memorable Date",
+  elementsJSON: [
+    {
+      type: "dropdown",
+      name: "birthMonth",
+      title: "Month",
+      titleLocation: "top",
+      isRequired: true,
+      width: "230px",
+      minWidth: "230px",
+      maxWidth: "230px",
+      allowClear: false,
+      autocomplete: "bday-month",
+      choices: [
+          {
+          "value": "01",
+          "text": "01 - January"
+          },
+          {
+          "value": "02",
+          "text": "02 - February"
+          },
+          {
+          "value": "03",
+          "text": "03 - March"
+          },
+          {
+          "value": "03",
+          "text": "03 - March"
+          },
+          {
+          "value": "04",
+          "text": "04 - April"
+          },
+          {
+          "value": "05",
+          "text": "05 - May"
+          },
+          {
+          "value": "06",
+          "text": "06 - June"
+          },
+          {
+          "value": "07",
+          "text": "07 - July"
+          },
+          {
+          "value": "08",
+          "text": "08 - August"
+          },
+          {
+          "value": "09",
+          "text": "09 - September"
+          },
+          {
+          "value": "10",
+          "text": "10 - October"
+          },
+          {
+          "value": "11",
+          "text": "11 - November"
+          },
+          {
+          "value": "12",
+          "text": "12 - December"
+          }
+      ]
+    },
+    {
+      type: "text",
+      name: "birthDay",
+      title: "Day",
+      titleLocation: "top",
+      isRequired: true,
+      width: "130px",
+      minWidth: "130px",
+      maxWidth: "130px",
+      startWithNewLine: false,
+      inputType: "number",
+      min: 1,
+      max: 31
+    },
+    {
+      type: "text",
+      name: "birthYear",
+      title: "Year",
+      titleLocation: "top",
+      isRequired: true,
+      width: "130px",
+      minWidth: "130px",
+      maxWidth: "130px",
+      startWithNewLine: false,
+    },
+  ],
+});
 
 @Component({
   selector: 'app-survey-creator',
