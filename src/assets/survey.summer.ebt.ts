@@ -2,19 +2,19 @@ export const surveyJson = {
     "title": "Summer EBT Demo",
     "logoPosition": "right",
     "pages": [
-     {
-      "name": "applicationStepsPage",
-      "elements": [
-       {
-        "type": "html",
-        "name": "applicationSteps",
-        "html": {
-         "default": "<div><span><svg width='100' height='75' id=\"svg-icon-prepareToApply\"><use href=\"#icon-prepareToApply\"></span><br><h4>Application steps</h4>This application should take about <b>15 minutes</b> to complete.</div><div class=\"box\"><b>Steps</b><br><ol><li>Student information</li><li>Household information</li><li>Income and employment</li><li>Contact information</li></ol></div>",
-         "es": "<div><span><svg width='100' height='75' id=\"svg-icon-prepareToApply\"><use href=\"#icon-prepareToApply\"></span><br><h4>Pasos de la solicitud</h4>Esta aplicación debería tardar aproximadamente <b>15 minutos </b> completar.</div><div class=\"box\"><b>Steps</b><br><ol><li>Student information</li><li>Household information</li><li>Income and employment</li><li>Contact information</li></ol></div>"
-        }
-       }
-      ]
-     },
+    {
+        "name": "applicationStepsPage",
+        "elements": [
+            {
+            "type": "html",
+            "name": "applicationSteps",
+            "html": {
+            "default": "<div><span><svg width='100' height='75' id=\"svg-icon-prepareToApply\"><use href=\"#icon-prepareToApply\"></span><br><h4>Application steps</h4>This application should take about <b>15 minutes</b> to complete.</div><div class=\"box\"><b>Steps</b><br><ol><li>Student information</li><li>Household information</li><li>Income and employment</li><li>Contact information</li></ol></div>",
+            "es": "<div><span><svg width='100' height='75' id=\"svg-icon-prepareToApply\"><use href=\"#icon-prepareToApply\"></span><br><h4>Pasos de la solicitud</h4>Esta aplicación debería tardar aproximadamente <b>15 minutos </b> completar.</div><div class=\"box\"><b>Steps</b><br><ol><li>Student information</li><li>Household information</li><li>Income and employment</li><li>Contact information</li></ol></div>"
+            }
+            }
+        ]
+    },      
      {
       "name": "studentInfoStepsPage",
       "elements": [
@@ -134,46 +134,13 @@ export const surveyJson = {
           "expression": "{panel.firstName} + ' ' + {panel.lastName}"
          },
          {
-          "type": "panel",
-          "name": "birthDatePanel",
-          "elements": [
-           {
-            "type": "text",
-            "name": "birthMonth",
-            "width": "80px",
-            "minWidth": "80px",
-            "maxWidth": "80px",
-            "startWithNewLine": false,
-            "title": "Month",
-            "titleLocation": "hidden"
-           },
-           {
-            "type": "text",
-            "name": "birthDay",
-            "width": "80px",
-            "minWidth": "80px",
-            "maxWidth": "80px",
-            "startWithNewLine": false,
-            "title": "Day",
-            "titleLocation": "hidden"
-           },
-           {
-            "type": "text",
-            "name": "birthYear",
-            "width": "95px",
-            "minWidth": "95px",
-            "maxWidth": "95px",
-            "startWithNewLine": false,
-            "title": "Year",
-            "titleLocation": "hidden"
-           }
-          ],
-          "title": "When were they born?",
-          "description": "Month / Day / Year",
-          "questionErrorLocation": "bottom",
-          "width": "auto",
-          "maxWidth": "550px",
-          "showQuestionNumbers": "off"
+            "type": "html",
+            "name": "question1",
+            "html": "<b>When were they born?</b><br>Month / Day / Year"
+         },
+         {
+            "type": "memorabledate",
+            "name": "birthDatePanel",
          },
          {
           "type": "radiogroup",
@@ -246,7 +213,8 @@ export const surveyJson = {
             "text": "Runaway from home"
            }
           ],
-          "showNoneItem": true
+          "showNoneItem": true,
+          "noneText": "None of the above"
          }
         ],
         "allowAddPanel": false,
@@ -336,7 +304,7 @@ export const surveyJson = {
           "html": "<div><span><svg width='100' height='75' id=\"svg-icon-school\"><use href=\"#icon-school\"></span><br><h4>School information for {panel.firstName}</h4></div>"
          },
          {
-          "type": "text",
+          "type": "dropdown",
           "choices": [ "Ophamer", "Opera", "Saint Poppy", "Penelope" ],
           "name": "schoolDistrict",
           "title": "In what school district does {panel.firstName} attend school?",
@@ -422,28 +390,28 @@ export const surveyJson = {
        }
       ]
      },
-    {
-    "name": "contactInfoPage",
-    "elements": [
-        {
-        "type": "html",
-        "name": "contactInfoPageHeader",
-        "html": "<div><span><svg width='100' height='75' id=\"svg-icon-contactInfo\"><use href=\"#icon-contactInfo\"></span><br><h4>How can we send you updates and reminders about your application in the future?</h4></div>"
-        },
-        {
-         "type": "text",
-         "name": "phoneNumber",
-         "title": "What's your phone number?",
-         "description": " A caseworker may use this number to contact you directly. If you don't have a phone number, you can enter a friend or family member's phone number instead.",
-         "inputType": "text",
-         inputMask: "phone",
-         inputFormat: "999-999-9999",
-         clearIncomplete: true,
-         isRequired: true,
-         requiredErrorText: "Please make sure you are entering a valid 10-digit phone number, area code first." 
-        }
-    ]
-    }
+     {
+        "name": "contactInfoPage",
+        "elements": [
+            {
+            "type": "html",
+            "name": "contactInfoPageHeader",
+            "html": "<div><span><svg width='100' height='75' id=\"svg-icon-contactInfo\"><use href=\"#icon-contactInfo\"></span><br><h4>How can we send you updates and reminders about your application in the future?</h4></div>"
+            },
+            {
+             "type": "text",
+             "name": "phoneNumber",
+             "title": "What's your phone number?",
+             "description": " A caseworker may use this number to contact you directly. If you don't have a phone number, you can enter a friend or family member's phone number instead.",
+             "inputType": "text",
+             inputMask: "phone",
+             inputFormat: "999-999-9999",
+             clearIncomplete: true,
+             isRequired: true,
+             requiredErrorText: "Please make sure you are entering a valid 10-digit phone number, area code first." 
+            }
+          ]
+         }    
     ],
     "showTitle": false,
     "showQuestionNumbers": "off",
@@ -454,4 +422,3 @@ export const surveyJson = {
     "pageNextText": "Continue",
     "firstPageIsStarted": true
    };
-  
