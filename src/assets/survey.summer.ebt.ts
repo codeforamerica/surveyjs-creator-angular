@@ -1,4 +1,4 @@
-export const surveyJson = {
+export const surveySummerEbtJson = {
     "title": "Summer EBT Demo",
     "logoPosition": "right",
     "pages": [

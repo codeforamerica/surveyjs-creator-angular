@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SurveyCreatorModel } from "survey-creator-core";
+import { SurveyCreatorModel, ICreatorPlugin } from "survey-creator-core";
 import * as SurveyCore from 'survey-core';
 import { SurveyCreatorModule } from "survey-creator-angular";
 import { ComponentCollection, SvgRegistry, Serializer } from 'survey-core';
@@ -30,7 +30,7 @@ SvgRegistry.registerIconFromSvg('icon-raceAndEthnicity','<svg th:fragment="raceA
 SvgRegistry.registerIconFromSvg('icon-docWithMagnifyingGlass','<svg th:fragment="docWithMagnifyingGlass" aria-hidden="true" width="100" height="75" viewBox="0 0 100 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M48.8641 69.286C38.8847 68.3619 27.9231 68.872 21.4478 61.2114C14.808 53.3563 15.2571 42.1893 17.4634 32.1376C19.6976 21.9587 24.4296 12.4152 33.3401 7.03147C43.4177 0.942532 56.0019 -2.69467 66.5883 2.45622C77.1451 7.59275 80.469 20.0406 83.4453 31.4106C86.6016 43.4685 91.8711 57.7555 83.4719 66.9549C75.2633 75.9454 60.9768 70.4076 48.8641 69.286Z" fill="#9BCBEB"/><path d="M65.2854 9.19509L30.2462 9.1665C27.3885 9.1665 25.0711 11.4887 25.0711 14.3611L25 64.2347C24.9929 67.1071 27.3103 69.4436 30.168 69.4436L68.6337 69.4721C71.4914 69.4721 73.8089 67.1499 73.8089 64.2776L73.8799 17.9694L65.2854 9.19509Z" fill="white"/><path d="M65.2854 17.9703L65.2854 9.19509L73.8089 17.9703H65.2854Z" fill="white"/><path d="M65.2854 9.19509L30.2462 9.1665C27.3885 9.1665 25.0711 11.4887 25.0711 14.3611L25 64.2347C24.9929 67.1071 27.3103 69.4436 30.168 69.4436L68.6337 69.4721C71.4914 69.4721 73.8089 67.1499 73.8089 64.2776L73.8799 17.9694L65.2854 9.19509ZM65.2854 9.19509L65.2854 17.9703H73.8089L65.2854 9.19509Z" stroke="black" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 35L51 35" stroke="black" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 45L51 45" stroke="black" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M36 25L65 25" stroke="black" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/><rect x="78.251" y="48.3169" width="16.0444" height="4" transform="rotate(27.8741 78.251 48.3169)" fill="white"/><line x1="70.8397" y1="42.6535" x2="91.7123" y2="54.4997" stroke="black" stroke-width="3"/><path d="M87.881 59.2242L88.7507 59.7178C88.7507 59.7178 90.9249 60.9518 92.4057 58.3427C93.8865 55.7337 91.7123 54.4997 91.7123 54.4997L90.8426 54.0061" stroke="black" stroke-width="3"/><line x1="67.8781" y1="47.8716" x2="88.7507" y2="59.7179" stroke="black" stroke-width="3"/><circle cx="67" cy="43" r="11.5" fill="#FFF2FF" stroke="black" stroke-width="3"/><path d="M61.7725 36.2874C59.6285 38.0346 58.4225 40.4538 58.0205 43.1418C57.8865 43.8138 58.4225 44.4858 59.2265 44.6202C60.0305 44.6202 60.5665 44.0826 60.7005 43.4106C60.9685 41.3946 61.9065 39.6474 63.3805 38.3034C63.9165 37.9002 64.0505 36.9594 63.5145 36.4218C63.2465 35.8842 62.4425 35.8842 61.7725 36.2874Z" fill="black"/></svg>');
 SvgRegistry.registerIconFromSvg('icon-contactInfo','<svg th:fragment="contactInfo" aria-hidden="true" width="100" height="75" viewBox="0 0 100 75" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M69.0027 15.29C75.788 20.9901 82.9658 26.7762 84.7183 35.4793C86.8366 45.9989 87.1357 58.7367 79.21 65.9796C71.3871 73.1286 59.3462 68.6268 48.7756 68.3258C38.7419 68.0401 27.468 71.1072 20.0963 64.2965C12.5938 57.365 12.5627 45.7731 13.3124 35.5617C13.9994 26.2048 16.886 16.7649 24.032 10.6887C30.7428 4.9825 40.1041 4.45129 48.8479 5.34594C56.5977 6.13887 63.0384 10.2796 69.0027 15.29Z" fill="#9BCBEB"/><path d="M71.7268 13H26.2831C21.7022 13 18 16.8126 18 21.5074V46.0967C18 50.8017 21.7121 54.6041 26.2831 54.6041H54.5486V63L62.7229 54.6041H71.717C76.2979 54.6041 80 50.7915 80 46.0967V21.5175C80.0099 16.8126 76.3077 13 71.7268 13Z" fill="white" stroke="black" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M36.6562 34.0605C36.6562 35.936 35.1827 37.4105 33.4208 37.4105C31.659 37.4105 30.1855 35.936 30.1855 34.0605C30.1855 32.1849 31.659 30.7104 33.4208 30.7104C35.1827 30.7104 36.6562 32.185 36.6562 34.0605ZM52.4326 34.0605C52.4326 35.936 50.9591 37.4105 49.1972 37.4105C47.4354 37.4105 45.9619 35.936 45.9619 34.0605C45.9619 32.185 47.4354 30.7104 49.1972 30.7104C50.9591 30.7104 52.4326 32.185 52.4326 34.0605ZM67.834 34.0605C67.834 35.936 66.3605 37.4105 64.5986 37.4105C62.8368 37.4105 61.3632 35.936 61.3632 34.0605C61.3632 32.185 62.8368 30.7104 64.5986 30.7104C66.3605 30.7104 67.834 32.185 67.834 34.0605Z" fill="#008EAA" stroke="#008EAA" stroke-width="2"/></svg>');
 
-const creatorOptions = {
+const options = {
   showTranslationTab: true,
   showLogicTab: true,
   showThemeTab: true,
@@ -137,6 +137,24 @@ ComponentCollection.Instance.add({
   ],
 });
 
+class SurveyTemplatesCreatorPlugin implements ICreatorPlugin {
+  constructor(private creator: SurveyCreatorModel) {
+      this.model = creator;
+      creator.addPluginTab(
+          "surveytemplates",
+          this,
+          "Survey Templates",
+          undefined,
+          0
+      );
+  }
+  public activate(): void { }
+  public deactivate(): boolean {
+      return true;
+  }
+  public model: SurveyCreatorModel;
+}
+
 @Component({
   selector: 'app-survey-creator',
   standalone: true,
@@ -146,7 +164,7 @@ ComponentCollection.Instance.add({
 })
 export class SurveyCreatorComponent implements OnInit {
 
-  surveyCreatorModel!: SurveyCreatorModel;
+  model!: SurveyCreatorModel;
 
   doMarkdown(survey: any, options: any) {
     var str = converter.makeHtml(options.text);
@@ -214,11 +232,11 @@ export class SurveyCreatorComponent implements OnInit {
       } 
     }      
   }
+
   ngOnInit() {
 
-    const creator = new SurveyCreatorModel(creatorOptions);
-
-    creator.JSON = surveyJson;
+    const creator = new SurveyCreatorModel(options);
+    new SurveyTemplatesCreatorPlugin(creator);
 
     creator.onSurveyInstanceCreated.add((sender,options) => {
       if(options.reason === "test")  {
@@ -241,6 +259,6 @@ export class SurveyCreatorComponent implements OnInit {
 
   });
     
-  this.surveyCreatorModel = creator; 
+  this.model = creator; 
 }
 }

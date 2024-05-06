@@ -1,0 +1,14 @@
+<div style="padding: 7px; width: 100%;">
+    <h3 class="sd-title sd-page__title">Templates list</h3>
+    <table class="table" style="width: 400px;">
+        <div *ngFor="let item of surveys">
+            <div>
+                <button (click)="loadSurvey(item)"
+                        class="sd-btn sd-btn--action"
+                        style="margin-top: 15px;">
+                    Load {{item.name}}
+                </button>
+            </div>
+        </div>
+    </table>
+</div>
