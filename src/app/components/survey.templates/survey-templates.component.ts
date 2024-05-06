@@ -1,9 +1,10 @@
 import { Component, OnInit, Input} from "@angular/core";
 import { SurveyCreatorModel } from "survey-creator-core";
 import { AngularComponentFactory, BaseAngular } from "survey-angular-ui";
-import { surveyCfaComponentsJson } from "../../assets/survey.cfa.components";
-import { surveySummerEbtJson } from "../../assets/survey.summer.ebt";
+import { surveyCfaComponentsJson } from "../../../assets/survey.cfa.components";
+import { surveySummerEbtJson } from "../../../assets/survey.summer.ebt";
 import { CommonModule } from "@angular/common";
+import { basename } from "path";
 
 interface ITemplateItem {
   name: string;
