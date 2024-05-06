@@ -1,1 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
+
+.usa-alert {
+    background-color: #f5f5f0;
+    border-left: .5rem solid #afaea2;
+    color: #171716;
+}
+
+.cfa-alert {
+    border-style: solid;
+    border-width: 2px;
+}
+
+.usa-alert--info {
+    background-color: #f5f5f0;
+    border-left-color: #76766a;
+}
+
+.usa-alert--success {
+    border-color: #216e1f;
+    background-color: #e3f5e1;
+    border-left-color: #00a91c;
+}
+
+.usa-alert--warning {
+    border-color: #ffbe2e;
+    background-color: #fef0c8;
+    border-left-color: #ffbe2e;
+}
+
+.usa-alert--error {
+    border-color: #cf4900;
+    background-color: #ffe2d1;
+    border-left-color: #cf4900;
+}
+
+.usa-alert--emergency {
+    border-color: #a72f10;
+    background-color: #fc906d;
+    border-left-color: #a72f10;
+}
+
+.cfa-alert .usa-alert__body {
+    padding: 1rem;
+}
+
+.usa-alert .usa-alert__text {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+.usa-alert .usa-alert__heading {
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+    font-size: 1.25rem;
+    line-height: 1;
+    margin-bottom: .5rem;
+    margin-top: 0;
+}
