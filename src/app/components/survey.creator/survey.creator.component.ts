@@ -144,7 +144,7 @@ class SurveyTemplatesCreatorPlugin implements ICreatorPlugin {
           "surveytemplates",
           this,
           "Survey Templates",
-          undefined,
+          "app-survey-templates",
           0
       );
   }
