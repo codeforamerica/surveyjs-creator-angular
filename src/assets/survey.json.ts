@@ -141,6 +141,7 @@ export const surveyJson = {
          {
             "type": "memorabledate",
             "name": "birthDatePanel",
+            "isRequired": true
          },
          {
           "type": "radiogroup",

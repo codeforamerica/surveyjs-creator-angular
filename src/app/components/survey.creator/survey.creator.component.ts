@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SurveyCreatorModel, ICreatorPlugin } from "survey-creator-core";
 import * as SurveyCore from 'survey-core';
 import { SurveyCreatorModule } from "survey-creator-angular";
-import { ComponentCollection, SvgRegistry, Serializer } from 'survey-core';
+import { ComponentCollection, QuestionCompositeModel, SvgRegistry, Serializer } from 'survey-core';
 import { Converter } from "showdown";
 import { surveyJson } from '../../../assets/survey.json';
 import "survey-core/survey.i18n.js";
@@ -48,7 +48,7 @@ ComponentCollection.Instance.add({
       name: "birthMonth",
       title: "Month",
       titleLocation: "top",
-      isRequired: true,
+      isRequired: false,
       width: "230px",
       minWidth: "230px",
       maxWidth: "230px",
@@ -114,7 +114,7 @@ ComponentCollection.Instance.add({
       name: "birthDay",
       title: "Day",
       titleLocation: "top",
-      isRequired: true,
+      isRequired: false,
       width: "130px",
       minWidth: "130px",
       maxWidth: "130px",
@@ -128,14 +128,29 @@ ComponentCollection.Instance.add({
       name: "birthYear",
       title: "Year",
       titleLocation: "top",
-      isRequired: true,
+      isRequired: false,
       width: "130px",
       minWidth: "130px",
       maxWidth: "130px",
       startWithNewLine: false,
     },
   ],
+  onCreated(question: QuestionCompositeModel) {
+    updateIsRequired(question);
+  },
+  onLoaded(question: QuestionCompositeModel) {
+    updateIsRequired(question);
+  },
+  onPropertyChanged(question: QuestionCompositeModel, propertyName: string) {
+    if (propertyName === "isRequired") {
+      updateIsRequired(question);
+    }
+  },
 });
+
+function updateIsRequired(question: QuestionCompositeModel) {
+  question.contentPanel.questions.forEach(q => q.isRequired = question.isRequired);
+}
 
 class SurveyTemplatesCreatorPlugin implements ICreatorPlugin {
   constructor(private creator: SurveyCreatorModel) {
