@@ -1,4 +1,4 @@
-export const surveyJson = {
+export const surveyCfaComponentsJson = {
     "title": "CfA Components Example",
     "logoPosition": "right",
     "pages": [
