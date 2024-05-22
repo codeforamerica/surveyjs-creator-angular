@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { SurveyCreatorModel, ICreatorPlugin } from "survey-creator-core";
 import * as SurveyCore from 'survey-core';
 import { SurveyCreatorModule } from "survey-creator-angular";
-import { ComponentCollection, QuestionCompositeModel, SvgRegistry, Serializer } from 'survey-core';
+import { ComponentCollection, ITheme, QuestionCompositeModel, SvgRegistry, Serializer } from 'survey-core';
 import { Converter } from "showdown";
 import { surveyJson } from '../../../assets/survey.json';
+import { surveyTheme } from '../../../assets/survey.theme.json';
 import "survey-core/survey.i18n.js";
 import "survey-creator-core/survey-creator-core.i18n.js";
 import "survey-core/defaultV2.css";
@@ -270,6 +271,8 @@ export class SurveyCreatorComponent implements OnInit {
       survey.onDynamicPanelAdded.add(SurveyCreatorComponent.onDynamicPanelAdded);
       survey.onDynamicPanelItemValueChanged.add(SurveyCreatorComponent.onDynamicPanelItemValueChanged);
       survey.onGetPanelFooterActions.add(SurveyCreatorComponent.onGetPanelFooterActions);
+
+      survey.applyTheme(surveyTheme as ITheme);
     }
 
   });
